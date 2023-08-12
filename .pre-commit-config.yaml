@@ -1,0 +1,33 @@
+default_stages:
+  - commit
+  - push
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer # asegura que un archivo esté vacío o termine con una nueva línea.
+    -   id: trailing-whitespace # adornos que siguen el espacio en blanco.
+    -   id: check-ast #verifica si los archivos se analizan como python válido.
+    -   id: check-docstring-first # verifica un error común de definir una cadena de documentos después del código.
+    -   id: detect-private-key # detecta la presencia de llaves privadas.
+-   repo: https://github.com/psf/black
+    rev: 23.3.0
+    hooks:
+    -   id: black
+# Encuentre y reemplace las cuerdas f innecesarias en su código.
+-   repo: https://github.com/dannysepler/rm_unneeded_f_str
+    rev: v0.2.0
+    hooks:
+    -   id: rm-unneeded-f-str
+
+#para eliminar automáticamente innecesarios # noqa
+-   repo: https://github.com/asottile/yesqa
+    rev: v1.4.0
+    hooks:
+    -   id: yesqa
+
+-   repo: https://github.com/asottile/reorder-python-imports
+    rev: v3.9.0
+    hooks:
+    -   id: reorder-python-imports
