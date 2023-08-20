@@ -11,6 +11,9 @@ repos:
     -   id: check-ast #verifica si los archivos se analizan como python válido.
     -   id: check-docstring-first # verifica un error común de definir una cadena de documentos después del código.
     -   id: detect-private-key # detecta la presencia de llaves privadas.
+    -   id: fix-encoding-pragma # agrega # - * - codificación: utf-8 - * - a la parte superior de los archivos
+    -   id: requirements-txt-fixer # clasifica las entradas en requirements.txt.
+
 -   repo: https://github.com/psf/black
     rev: 23.3.0
     hooks:
@@ -28,6 +31,16 @@ repos:
     -   id: yesqa
 
 -   repo: https://github.com/asottile/reorder-python-imports
-    rev: v3.9.0
+    rev: v3.10.0
     hooks:
     -   id: reorder-python-imports
+
+
+-   repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.10.0  # Use the ref you want to point at
+    hooks:
+    -   id: python-no-log-warn # Una verificación rápida del método de registradores de pitón en desuso `.warn ( )`
+    -   id: python-check-blanket-noqa # Haga cumplir que las anotaciones `noqa` siempre ocurren con códigos específicos. Anotaciones de muestra: `# noqa: F401`, `# noqa: F401, W203`
+    -   id: python-check-blanket-type-ignore # Haga cumplir ese tipo `#: ignorar` las anotaciones siempre ocurren con códigos específicos. Anotaciones de muestra: `# type: ignore [ attr#defined ]`, `# type: ignore [ attr-defined, name-defined ]`
+    -   id: python-check-mock-methods # Prevenir errores comunes de `afirmar mck.not_llamado ( )`,` asociar mck.llamed_once_with ( ... ) `y` mck.assert_llamed
+    -   id: python-use-type-annotations # Haga cumplir que se usen anotaciones de tipo python3.6 + en lugar de comentarios de tipo
